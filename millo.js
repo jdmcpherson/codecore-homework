@@ -31,3 +31,13 @@ function createBoard(boardName) {
     hello[boardName] = {}
     return `Board "${boardName}" was created`;
 };
+
+function removeBoard(boardName) {
+    for (let check in hello) {
+        if (check == boardName) {
+            delete hello[boardName];
+            return `Board ${boardName} was removed`;
+        }
+    }
+    return "Board does not exist";
+};
