@@ -21,4 +21,13 @@ function listBoards() {
 
 };
 
-function createBoard(boardName) {};
+function createBoard(boardName) {
+    for (let check in hello) {
+        if (check == boardName) {
+            return "Board already exists";
+        }
+    }
+
+    hello[boardName] = {}
+    return `Board "${boardName}" was created`;
+};
