@@ -55,3 +55,18 @@ function displayBoard(boardName) {
         }
     }
 };
+
+function createList(boardName, listName) {
+    const board = hello[boardName];
+    if (board === undefined) {
+        return "Board not found";
+    } else { 
+        let list = board[listName];
+        if (list === undefined) {
+            hello[boardName][listName] = [];
+            return `List ${listName} was added to ${boardName}`
+        } else {
+            return "List name already exists";
+        }
+    }
+}
