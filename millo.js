@@ -100,3 +100,23 @@ function removeList(boardName, listName) {
         }
     }
 }
+
+function removeCard(boardName, listName, cardIndex) {
+    let board = hello[boardName];
+    if (board === undefined) {
+        return "Board does not exist";
+    } else {
+        let list = board[listName];
+        if (list === undefined) {
+            return "List does not exist";
+        } else {
+            let cardName = hello[boardName][listName][cardIndex];
+            if (cardName === undefined) {
+                return "Card does not exist";
+            } else {
+                hello[boardName][listName].splice(cardIndex,1);
+                return `Card ${cardName} was deleted from list ${listName}`;
+            }
+        }
+    }
+}
