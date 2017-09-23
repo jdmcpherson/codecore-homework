@@ -85,3 +85,18 @@ function createCard(boardName, listName, cardName) {
         }
     }
 }
+
+function removeList(boardName, listName) {
+    let board = hello[boardName];
+    if (board === undefined) {
+        return "Board does not exist";
+    } else {
+        let list = board[listName];
+        if (list === undefined) {
+            return "List does not exist";
+        } else {
+            delete board[listName];
+            return `List ${listName} was deleted from ${boardName}`;
+        }
+    }
+}
