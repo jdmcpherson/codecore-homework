@@ -57,7 +57,7 @@ function displayBoard(boardName) {
 };
 
 function createList(boardName, listName) {
-    const board = hello[boardName];
+    let board = hello[boardName];
     if (board === undefined) {
         return "Board not found";
     } else { 
@@ -67,6 +67,21 @@ function createList(boardName, listName) {
             return `List ${listName} was added to ${boardName}`
         } else {
             return "List name already exists";
+        }
+    }
+}
+
+function createCard(boardName, listName, cardName) {
+    let board = hello[boardName];
+    if (board === undefined) {
+        return "Board does not exist";
+    } else {
+        let list = board[listName];
+        if (list === undefined) {
+            return "List does not exist";
+        } else {
+            hello[boardName][listName].push(cardName);
+            return `Card ${cardName} pushed to list ${listName}`;
         }
     }
 }
