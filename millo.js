@@ -120,3 +120,35 @@ function removeCard(boardName, listName, cardIndex) {
         }
     }
 }
+
+function moveCard(boardName, fromList, toList, fromCardIndex, toCardIndex) {
+    let board = hello[boardName];
+    if (board === undefined) {
+        return "Board does not exist";
+    } else {
+        let from = board[fromList];
+        if (from === undefined) {
+            return "fromList does not exist";
+        } else {
+            let to = board[toList];
+            if (to === undefined) {
+                return "toList does not exist";
+            } else {
+                let fromIndex = board[fromList][fromCardIndex];
+                if (fromIndex === undefined) {
+                    return "fromCardIndex is invalid";
+                } else {
+                    let toIndex = board[toList][toCardIndex];
+                    if (toIndex === undefined) {
+                        return "toCardIndex is invalid";
+                    } else {
+                        let insert = hello[boardName][fromList][fromCardIndex];
+                        hello[boardName][fromList].splice(fromCardIndex, 1);
+                        hello[boardName][toList].splice(toCardIndex,0,insert);
+                        return `Transferred ${insert} from ${fromList} to ${toList}`;
+                    }
+                }
+            }
+        }
+    }
+}
