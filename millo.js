@@ -41,3 +41,17 @@ function removeBoard(boardName) {
     }
     return "Board does not exist";
 };
+
+function displayBoard(boardName) {
+    let board = hello[boardName];
+    if (board === undefined) {
+        return "Board not found";
+    } else {
+        for (let content in board) {
+            console.log(`\n--------------\n${content}\n--------------\n`);
+            for (let item of board[content]){
+                console.log(`> ${item}`);
+            }
+        }
+    }
+};
