@@ -17,4 +17,15 @@ module HelperMethods
            print output
         end
     end
+
+    class Extend
+        extend Title
+    end
+
+    class Include
+        include Title
+    end
 end
+
+Extend.titleize
+Include.new.titleize
