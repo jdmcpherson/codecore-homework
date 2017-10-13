@@ -1,7 +1,22 @@
 <%- include('./partials/header') %>
 
 <div class=container>
-    <p>insert cohorts here</p>
+    <% if(cohorts.length > 0) { %>
+        <% for(let cohort of cohorts) { %>
+            <div class="card">
+                <div>
+                    <img style="border-radius: 100%" class=" img-fluid" src="<%= cohort.image_path %>">
+                    <h3><%= cohort.name %></h3>
+                </div>
+                <div>
+                    <p><%= cohort.members %></p>
+                </div>
+                <button type="button" class="btn btn-primary" href="#">Show Cohort</button>
+            </div>
+        <% } %>
+    <% } else { %>
+        <h3 class="text-center">Hmm...there's nothing here yet..</h3>
+    <% } %>
 </div>
 
 <%- include('./partials/footer') %>

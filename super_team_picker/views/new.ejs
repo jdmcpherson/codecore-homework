@@ -1,26 +1,26 @@
 <%- include('./partials/header') %>
 
 <div class=container>
-    <form>
+    <form action='/cohorts/new' enctype="multipart/form-data" method='POST'>
         <div class="form-group">
             <label for="logo">Logo</label>
-            <div class="card">
-                <input type="file" id="logo">
+            <div class="card form-control">
+                <input type="file" name="logo" id="logo">
             </div>
         </div>
         <div class="form-group">
             <label for="name">Name</label>
-            <div class="card">
-                <input type="text" id="name" placeholder="Flying Funks">
+            <div class="card form-control">
+                <input type="text" id="name" name="name" placeholder="Flying Funks">
             </div>
         </div>
         <div class="form-group">
             <label for="members">Members</label>
-            <div class="card">
-                <textarea class="form-control" id="members" rows="4" placeholder="James, Games, Names, Dames, Sames"></textarea>
+            <div class="card form-control">
+                <textarea class="form-control" id="members" rows="4" name="members" placeholder="James, Games, Names, Dames, Sames"></textarea>
             </div>
         </div>
-        <button type="submit" class="btn btn-outline-primary float-right">Submit</button>
+        <input type="submit" class="btn btn-outline-primary float-right" value="Submit"/>
     </form>
 </div>
 
