@@ -8,7 +8,7 @@ module HelperMethods
             array = @string.split(' ')
             output = ""
             for word in array
-                unless word == 'in' || word == 'the' || word == 'of' || word == 'and' || word   == 'or' || word == 'from'
+                unless %w(in the of and or from).include?(word)
                     output += "#{word.capitalize} "
                 else
                     output +="#{word} "
