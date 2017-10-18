@@ -46,6 +46,98 @@ app.post('/cohorts/new', upload.single('image'), (request, response) => {
     }
 })
 
+app.get('/cohorts/:id', (request, response) => {
+    const { id } = request.params
+    
+    if (request.query.members !== undefined) {
+        const { sortMethod, quantity, members } = request.query
+
+        function shuffle(arr) {
+            console.log(arr);
+            for (let i = arr.length - 1; i >= 0; i--) { 
+                let j = Math.floor(Math.random() * (i + 1)); 
+                let x = arr[i]; 
+                arr[i] = arr[j]; 
+                arr[j] = x; 
+            } 
+            console.log('arr', arr);
+            return arr; 
+        } 
+
+        function makeTeams(arr) {
+            let membersArr = shuffle(arr.toString().split(', '));
+            let numTeams = parseInt(quantity);
+            let teams = []; 
+            if (sortMethod === "op1") { 
+                let teams_count = numTeams;
+                let perTeam = Math.floor((membersArr.length + 1) / numTeams);
+                while (teams_count > 0) { 
+                    teams.push(membersArr.splice(0, perTeam))
+                    teams_count--; 
+                } 
+                return teams; 
+            } else if (sortMethod === "op2") {
+                let teams_count = Math.ceil((membersArr.length)/ numTeams);
+                while (teams_count > 0) { 
+                    teams.push(membersArr.splice(0, numTeams)) 
+                    teams_count--; 
+                } 
+                return teams; 
+            }
+        }
+
+        let output = makeTeams(members)
+
+        kx
+            .first()
+            .from('cohorts')
+            .where({id})
+            .then(cohort => {
+                response.render('team', { cohort, teams: output })
+            })
+    } else {
+        kx
+        .first()
+        .from('cohorts')
+        .where({id})
+        .then(cohort => {
+            response.render('team', { cohort, teams: null })
+        })
+    }
+
+})
+
+// app.post('/cohorts/:id', (request, response) => {
+//     const { sortMethod, quantity } = request.query;
+   
+//     // response.append('container', 'test') 
+//     // if ({sortMethod} === "op1") {
+        
+//     // } else if ({sortMethod} === "op2") {
+
+//     // } else {
+//     //     const { id } = request.params
+
+//     //     kx
+//     //         .first()
+//     //         .from('cohorts')
+//     //         .where({id})
+//     //         .then(cohort => {
+//     //             response.render('team', {cohort})
+//     //         })
+//     // }
+
+//     const { id } = request.params
+
+//     kx
+//     .first()
+//     .from('cohorts')
+//     .where({id})
+//     .then(cohort => {
+//         response.render('team', {cohort})
+//     })
+// })
+
 app.listen(
     9090,
     () => console.log(`Server listening on http://localhost:9090`)
