@@ -1,0 +1,24 @@
+<%- include('./partials/header') %>
+
+<div class=container>
+    <% if(cohorts.length > 0) { %>
+        <% for(let cohort of cohorts) { %>
+            <div class="card">
+                <div class="title-card">
+                    <img class="logo float-left img-fluid" src="<%= cohort.image_path %>">
+                    <h3 class="team-label float-left"><%= cohort.name %></h3>
+                </div>
+                <div>
+                    <p><%= cohort.members %></p>
+                </div>
+                <div>
+                    <a href="/cohorts/<%= cohort.id %>" class="btn btn-primary">Show Cohort</a>
+                </div>
+            </div>
+        <% } %>
+    <% } else { %>
+        <h3 class="text-center">Hmm...there's nothing here yet..</h3>
+    <% } %>
+</div>
+
+<%- include('./partials/footer') %>

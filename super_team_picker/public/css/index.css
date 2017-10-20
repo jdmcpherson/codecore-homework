@@ -1,0 +1,25 @@
+.navbar {
+    color: dodgerblue;
+}
+
+.card {
+    padding: 1rem;
+}
+
+form input[type=text] {
+    padding: 0.5rem;
+}
+
+.logo {
+    border-radius: 100%;
+    width: 5rem;
+    height: 5rem;
+}
+
+.team-label {
+    padding: 1em 0.5em 0 0.5em 
+}
+
+.title-card {
+    margin-bottom: 1rem
+}

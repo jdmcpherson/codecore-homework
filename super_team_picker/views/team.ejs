@@ -1,0 +1,66 @@
+<%- include('./partials/header') %>
+
+<div class="container">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="title-card">
+                <h3 class="team-label"><%= cohort.name %></h3>
+            </div>
+            <div>
+                <p><%= cohort.members %></p>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <form enctype="multipart/form-data" method='GET'>
+                <h5>Method</h5>
+                <fieldset class="form-group">
+                    <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="sortMethod" id="op1" value="op1">
+                            Team Count
+                        </label>
+                    </div>
+                    <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="sortMethod" id="op2" value="op2">
+                            Number per Team
+                        </label>
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <h5>Quantity</h5>
+                        <input class="form-control" type="text" name="quantity">
+                </div>
+                <input type="hidden" name="members" value="<%= [cohort.members] %>">
+                <br>
+                <button type="submit" class="btn btn-outline-primary btn-block">Assign Teams</button>
+            </form>
+            <br>
+        </li>
+            <li class="list-group-item">
+                <% if (teams !== null) { %>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Teams</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (let team in teams) { %>
+                            <% let row = parseInt(team) + 1 %>
+                                <tr>
+                                    <th scope="row"> <%= row %> </th>
+                                    <td> <%= teams[team] %> </td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                <% } %>
+            </li>
+    </ul>
+</div>
+
+
+
+<%- include('./partials/footer') %>
